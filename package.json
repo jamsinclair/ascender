@@ -1,0 +1,8 @@
+{
+  "name": "ascender",
+  "version": "0.1.0",
+  "description": "Lightweight promise based drag'n'drop upload",
+  "main": "index.js",
+  "author": "jamsinclair <jamsinclairnz@gmail.com>",
+  "license": "MIT"
+}
