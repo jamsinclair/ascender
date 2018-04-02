@@ -1,0 +1,15 @@
+.drop-area {
+  width: 100%;
+  height: 200px;
+  background: red;
+}
+
+.stop-click {
+  width: 100px;
+  height: 100px;
+  background: green;
+}
+
+.asc-drop-area--inside {
+  background: blue;
+}
