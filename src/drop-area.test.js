@@ -25,9 +25,17 @@ describe('DropArea Construction', () => {
       },
       clickable: false
     }
-    const instance = new DropArea(document.createElement('div'), customOptions)
 
-    expect(instance.options).toEqual({
+    const instanceWithDefaultOptions = new DropArea(document.createElement('div'))
+    const instanceWithCustomOptions = new DropArea(document.createElement('div'), customOptions)
+
+    expect(instanceWithDefaultOptions.options).toEqual({
+      classes: {
+        insideDropArea: 'asc-drop-area--inside'
+      },
+      clickable: true
+    })
+    expect(instanceWithCustomOptions.options).toEqual({
       classes: {
         insideDropArea: 'custom-inside-class'
       },
