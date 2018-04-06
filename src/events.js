@@ -11,5 +11,6 @@ export const NATIVE_EVENTS = {
 
 export const CUSTOM_EVENTS = {
   DESTROY: 'destroy',
+  FILE_ADDED: 'file:added',
   FILES_ADDED: 'files:added'
 }
