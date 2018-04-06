@@ -1,20 +1,24 @@
-import DropArea from '../src/drop-area'
-
-window.DropArea = DropArea
+import Ascender from '../src/ascender'
 
 const dropAreaNode = document.querySelector('.drop-area')
-window.instance = new DropArea(dropAreaNode)
+const previewNode = document.querySelector('.preview-container')
 
-const stopClickNode = document.querySelector('.stop-click')
-stopClickNode.addEventListener('click', e => {
-  console.log('Droparea click has been stopped/captured')
-  e.stopPropagation()
-})
 
-instance.on('click', (e) => {
-  console.log('Droparea has been clicked')
-})
+if (!window.instance) {
+  window.instance = new Ascender(dropAreaNode)
 
-instance.on('files:added', (files) => {
-  console.log(files)
-})
+  instance.on('file:added', (file) => {
+    console.log('Current files: ', instance.files)
+
+    file.getDataUri().then(uri => {
+      const newImg = document.createElement('img')
+      newImg.src = uri
+      newImg.classList.add('image-preview')
+      previewNode.appendChild(newImg)
+    }).catch(err => {
+      console.log('problem showing image', err)
+    })
+  })
+}
+
+
