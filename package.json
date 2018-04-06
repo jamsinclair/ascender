@@ -6,7 +6,7 @@
   "author": "James Sinclair <jamsinclairnz@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "parcel ./examples/index.html",
+    "start": "parcel ./examples/index.html -d ./examples-build/",
     "format": "prettier-standard 'src/**/*.js'",
     "test": "jest ./src"
   },
