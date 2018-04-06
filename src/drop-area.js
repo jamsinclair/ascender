@@ -87,8 +87,7 @@ export default class DropArea extends Emitter {
    * @param {Boolean} toggle - The toggle: True will add listeners, false will remove.
    */
   _toggleListeners (toggle) {
-    const action =
-      toggle === 'remove' ? 'removeEventListener' : 'addEventListener'
+    const action = toggle ? 'addEventListener' : 'removeEventListener'
 
     this._element[action](NATIVE_EVENTS.CLICK, this)
     this._element[action](NATIVE_EVENTS.DRAG_START, this)
