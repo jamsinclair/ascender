@@ -13,13 +13,17 @@ export default class Ascender extends Emitter {
   }
 
   /**
-   * Removes any listeners and logic bound to the DropArea instance.
+   * Tidies up any listeners and logic created by Ascender
    */
   destroy () {
-    if (this._element) {
+    if (this.dropArea) {
       this._toggleListeners(false)
-      this.emit(CUSTOM_EVENTS.DESTROY)
+
+      this.dropArea.destroy()
+      this.dropArea = null
     }
+
+    this.emit(CUSTOM_EVENTS.DESTROY)
   }
 
   /**
