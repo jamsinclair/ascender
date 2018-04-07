@@ -3,6 +3,19 @@
   "version": "0.1.0",
   "description": "Lightweight promise based drag'n'drop upload",
   "main": "index.js",
-  "author": "jamsinclair <jamsinclairnz@gmail.com>",
-  "license": "MIT"
+  "author": "James Sinclair <jamsinclairnz@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "parcel ./examples/index.html -d ./examples-build/",
+    "format": "prettier-standard 'src/**/*.js'",
+    "test": "jest ./src"
+  },
+  "dependencies": {
+    "tiny-emitter": "^2.0.2"
+  },
+  "devDependencies": {
+    "jest": "^22.4.3",
+    "parcel-bundler": "^1.7.0",
+    "prettier-standard": "^8.0.0"
+  }
 }
