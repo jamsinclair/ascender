@@ -1,0 +1,21 @@
+html {
+  font-family: "Helvetica Neue", Helvetica, sans-serif;
+}
+
+pre {
+  border-radius: 10px;
+}
+
+.page-container {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+.live-example {
+  padding: 20px;
+  border: 2px solid #000000;
+}
