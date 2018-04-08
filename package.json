@@ -16,6 +16,7 @@
   "devDependencies": {
     "jest": "^22.4.3",
     "parcel-bundler": "^1.7.0",
-    "prettier-standard": "^8.0.0"
+    "prettier-standard": "^8.0.0",
+    "prismjs": "^1.13.0"
   }
 }
