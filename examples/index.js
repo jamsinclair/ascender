@@ -1,25 +1,19 @@
 import Ascender from '../src/ascender'
+import fs from 'fs'
+import { renderExample } from './exampler'
 
-const dropAreaNode = document.querySelector('.drop-area')
-const previewNode = document.querySelector('.preview-container')
-
-const instance = new Ascender(dropAreaNode)
-
-instance.on('file:added', (file) => {
-  console.log('Current files: ', instance.files)
-
-  file.getDataUri().then(uri => {
-    const newImg = document.createElement('img')
-    newImg.src = uri
-    newImg.classList.add('image-preview')
-    previewNode.appendChild(newImg)
-  }).catch(err => {
-    console.log('Problem showing image', err)
-  })
-})
+window.Ascender = Ascender
 
 if (module.hot) {
   module.hot.dispose(() => {
     window.location.reload()
   })
 }
+
+const imagePreviewExample = {
+  html: fs.readFileSync(__dirname + `/image-preview/example.html`, 'utf8'),
+  css: fs.readFileSync(__dirname + `/image-preview/example.css`, 'utf8'),
+  js: fs.readFileSync(__dirname + `/image-preview/example.js`, 'utf8')
+}
+
+renderExample(imagePreviewExample, '.image-preview-example')

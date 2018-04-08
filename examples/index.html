@@ -5,37 +5,16 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Ascender Example</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="../node_modules/prismjs/themes/prism.css">
   <link rel="stylesheet" href="./main.css">
 </head>
-<body>
-  <pre>
-import Ascender from '../src/ascender'
+<body class="page-container">
+  <h1>Ascender</h1>
+  <p>A minimal and modular Drag'n'Drop JS library.</p>
 
-const dropAreaNode = document.querySelector('.drop-area')
-const previewNode = document.querySelector('.preview-container')
-
-const instance = new Ascender(dropAreaNode)
-
-instance.on('file:added', (file) => {
-  console.log('Current files: ', instance.files)
-
-  file.getDataUri().then(uri => {
-    const newImg = document.createElement('img')
-    newImg.src = uri
-    newImg.classList.add('image-preview')
-    previewNode.appendChild(newImg)
-  }).catch(err => {
-    console.log('problem showing image', err)
-  })
-})
-  </pre>
-  <div class="drop-area">
-    <h1>
-      Drop your images here or <span class="underline">click to select</span>
-    </h1>
-  </div>
-  <h2>Image Previews:</h2>
-  <div class="preview-container"></div>
+  <hr>
+  <h2>Image Preview Example</h2>
+  <div class="image-preview-example"></div>
   <script src="index.js"></script>
 </body>
 </html>

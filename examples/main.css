@@ -2,36 +2,20 @@ html {
   font-family: "Helvetica Neue", Helvetica, sans-serif;
 }
 
-.drop-area {
-  display: flex;
-  width: 100%;
-  height: 200px;
-
-  text-align: center;
-  align-items: center;
-  justify-content: center;
-
-  border: 2px dashed #000;
+pre {
+  border-radius: 10px;
 }
 
-.underline {
-  text-decoration: underline;
+.page-container {
+  max-width: 960px;
+  margin: 0 auto;
 }
 
-.asc-drop-area--inside {
-  animation: pulse 1.5s infinite ease-in-out;
+.uppercase {
+  text-transform: uppercase;
 }
 
-.image-preview {
-  max-width: 200px;
-  max-height: 200px;
-}
-
-@keyframes pulse {
-  0% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(0.985);
-  }
+.live-example {
+  padding: 20px;
+  border: 2px solid #000000;
 }
