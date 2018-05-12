@@ -4,9 +4,15 @@ import DropArea from './drop-area'
 import DropFile from './drop-file'
 
 export default class Ascender extends Emitter {
-  constructor (element) {
+  /**
+   * Ascender constructor.
+   * @constructs Ascender
+   * @param {HTMLElement} element - The desired element for drop area
+   * @param {Object} options - Options for ascender modules
+   */
+  constructor (element, options = {}) {
     super()
-    this.dropArea = new DropArea(element)
+    this.dropArea = new DropArea(element, options.dropArea)
     this.files = []
 
     this._toggleListeners(true)
