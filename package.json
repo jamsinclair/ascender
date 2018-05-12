@@ -3,7 +3,11 @@
   "version": "0.2.0-beta",
   "description": "Lightweight promise based drag'n'drop upload",
   "main": "dist/ascender.js",
-  "author": "James Sinclair <jamsinclairnz@gmail.com>",
+  "author": "James Sinclair <jamsinclairnz+npm@gmail.com>",
+  "files": [
+    "dist/*",
+    "src/*"
+  ],
   "license": "MIT",
   "scripts": {
     "start": "parcel ./examples/index.html -d ./examples-build/",
