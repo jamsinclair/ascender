@@ -26,8 +26,13 @@ describe('DropArea Construction', () => {
       clickable: false
     }
 
-    const instanceWithDefaultOptions = new DropArea(document.createElement('div'))
-    const instanceWithCustomOptions = new DropArea(document.createElement('div'), customOptions)
+    const instanceWithDefaultOptions = new DropArea(
+      document.createElement('div')
+    )
+    const instanceWithCustomOptions = new DropArea(
+      document.createElement('div'),
+      customOptions
+    )
 
     expect(instanceWithDefaultOptions.options).toEqual({
       classes: {

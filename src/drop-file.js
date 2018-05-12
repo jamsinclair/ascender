@@ -27,13 +27,21 @@ export default class DropFile {
     return new Promise((resolve, reject) => {
       const reader = new FileReader()
 
-      reader.addEventListener('load', () => {
-        resolve(reader.result)
-      }, false)
+      reader.addEventListener(
+        'load',
+        () => {
+          resolve(reader.result)
+        },
+        false
+      )
 
-      reader.addEventListener('error', err => {
-        reject(err)
-      }, false)
+      reader.addEventListener(
+        'error',
+        err => {
+          reject(err)
+        },
+        false
+      )
 
       reader.readAsDataURL(file)
     })

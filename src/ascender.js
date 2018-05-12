@@ -40,7 +40,9 @@ export default class Ascender extends Emitter {
   _toggleListeners (toggle) {
     const action = toggle ? 'on' : 'off'
 
-    this.dropArea[action](CUSTOM_EVENTS.FILES_ADDED, files => this._onFilesAdded(files))
+    this.dropArea[action](CUSTOM_EVENTS.FILES_ADDED, files =>
+      this._onFilesAdded(files)
+    )
   }
 
   /**
