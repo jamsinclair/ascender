@@ -2,7 +2,7 @@
   "name": "ascender",
   "version": "0.1.0",
   "description": "Lightweight promise based drag'n'drop upload",
-  "main": "index.js",
+  "main": "dist/ascender.js",
   "author": "James Sinclair <jamsinclairnz@gmail.com>",
   "license": "MIT",
   "scripts": {
