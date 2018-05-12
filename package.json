@@ -1,6 +1,6 @@
 {
   "name": "ascender",
-  "version": "0.1.0",
+  "version": "0.2.0-beta",
   "description": "Lightweight promise based drag'n'drop upload",
   "main": "dist/ascender.js",
   "author": "James Sinclair <jamsinclairnz@gmail.com>",
