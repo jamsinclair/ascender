@@ -2,6 +2,7 @@ import Emitter from 'tiny-emitter'
 import { NATIVE_EVENTS, CUSTOM_EVENTS } from './events'
 
 const DEFAULT_OPTIONS = {
+  multipleFiles: false,
   clickable: true,
   classes: {
     insideDropArea: 'asc-drop-area--inside'
@@ -120,6 +121,11 @@ export default class DropArea extends Emitter {
     }
 
     input.setAttribute('type', 'file')
+
+    if (this.options.multipleFiles) {
+      input.setAttribute('multiple', 'multiple')
+    }
+
     input.addEventListener(NATIVE_EVENTS.CLICK, event => {
       // Stops the invoked file input click bubbling and triggering parent listeners
       event.stopPropagation()
@@ -189,8 +195,13 @@ export default class DropArea extends Emitter {
    * Handler for when a files are added after a Drop event
    */
   _onFilesAdded (files) {
-    if (files.length) {
-      this.emit(CUSTOM_EVENTS.FILES_ADDED, files)
+    if (!files.length) {
+      return
     }
+
+    // Only return one file, unless multiple files option set
+    const filesToAdd = this.options.multipleFiles ? files : [files[0]]
+
+    this.emit(CUSTOM_EVENTS.FILES_ADDED, filesToAdd)
   }
 }
