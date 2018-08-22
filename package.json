@@ -10,10 +10,8 @@
   ],
   "license": "MIT",
   "scripts": {
-    "start": "parcel ./examples/index.html -d ./examples-build/",
     "format": "prettier-standard 'src/**/*.js'",
     "test": "jest ./src",
-    "build-docs": "parcel build ./examples/index.html -d ./docs --public-url ./",
     "build-dist": "rollup -c"
   },
   "dependencies": {
@@ -23,9 +21,7 @@
     "babel-plugin-external-helpers": "^6.22.0",
     "babel-preset-env": "^1.7.0",
     "jest": "^22.4.3",
-    "parcel-bundler": "^1.7.0",
     "prettier-standard": "^8.0.0",
-    "prismjs": "^1.13.0",
     "rollup": "^0.58.2",
     "rollup-plugin-babel": "^3.0.4",
     "rollup-plugin-commonjs": "^9.1.3",
