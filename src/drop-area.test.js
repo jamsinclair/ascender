@@ -38,13 +38,15 @@ describe('DropArea Construction', () => {
       classes: {
         insideDropArea: 'asc-drop-area--inside'
       },
-      clickable: true
+      clickable: true,
+      multipleFiles: false
     })
     expect(instanceWithCustomOptions.options).toEqual({
       classes: {
         insideDropArea: 'custom-inside-class'
       },
-      clickable: false
+      clickable: false,
+      multipleFiles: false
     })
   })
 })
