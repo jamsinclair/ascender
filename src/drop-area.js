@@ -56,8 +56,7 @@ export default class DropArea extends Emitter {
   handleEvent (event) {
     if (
       !this._element.isSameNode(event.target) &&
-      !this._element.contains(event.target) &&
-      !this._targetShadowDOMContainsDropArea(event)
+      !this._element.contains(event.target)
     ) {
       return
     }
@@ -140,21 +139,6 @@ export default class DropArea extends Emitter {
     Object.assign(input.style, styles)
     this._hiddenFileInput = input
     this._element.appendChild(input)
-  }
-
-  /**
-   * Ugly Method Name used to check if the event target is actually a ShadowRoot containing
-   * a DropArea. This is because Drop and DragOver listeners are bound to the Window.
-   * The window events target will be the ShadowRoot and not actually the element within
-   *
-   * @param {Event} event - The targeting event
-   */
-  _targetShadowDOMContainsDropArea (event) {
-    if (event.target.shadowRoot) {
-      return event.target.shadowRoot.contains(this._element)
-    }
-
-    return false
   }
 
   /**
