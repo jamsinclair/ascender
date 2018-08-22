@@ -5,8 +5,8 @@ export default class DropFile {
    * @param {File} file - The File object/blob to turn into internal
    */
   constructor (file) {
-    this._file = file
-    this._readerPromise = this._createDataUri(file)
+    this.data = file
+    this._dataUri = null
   }
 
   /**
@@ -14,8 +14,7 @@ export default class DropFile {
    * @return {Promise} A promise that resolves with the Data URI of file
    */
   getDataUri () {
-    // @TODO Do I make this synchronous?
-    return this._readerPromise
+    return this._dataUri ? Promise.resolve(this._dataUri) : this._createDataUri()
   }
 
   /**
@@ -23,7 +22,7 @@ export default class DropFile {
    * @private
    * @return {Promise} A promise that resolves with the Data URI of file
    */
-  _createDataUri (file) {
+  _createDataUri () {
     return new Promise((resolve, reject) => {
       const reader = new FileReader()
 
@@ -43,7 +42,7 @@ export default class DropFile {
         false
       )
 
-      reader.readAsDataURL(file)
+      reader.readAsDataURL(this.data)
     })
   }
 }
