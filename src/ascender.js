@@ -51,11 +51,10 @@ export default class Ascender extends Emitter {
    * @param {FileList} files - Files added by the DropArea
    */
   _onFilesAdded (files) {
-    for (let i = 0; i < files.length; i++) {
+    files.forEach(file => {
       const fileToAdd = new DropFile(files[i])
-
       this.files.push(fileToAdd)
       this.emit(CUSTOM_EVENTS.FILE_ADDED, fileToAdd)
-    }
+    })
   }
 }
