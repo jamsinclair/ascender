@@ -52,7 +52,7 @@ export default class Ascender extends Emitter {
    */
   _onFilesAdded (files) {
     files.forEach(file => {
-      const fileToAdd = new DropFile(files[i])
+      const fileToAdd = new DropFile(file)
       this.files.push(fileToAdd)
       this.emit(CUSTOM_EVENTS.FILE_ADDED, fileToAdd)
     })
