@@ -7,6 +7,15 @@ export default class DropFile {
   constructor (file) {
     this.data = file
     this._dataUri = null
+    this._binary = null
+  }
+
+  /**
+   * Gets the binary data of the file
+   * @return {Promise} A promise that resolves with the binary of file
+   */
+  getBinary () {
+    return this._binary ? Promise.resolve(this._binary) : this._createBinary()
   }
 
   /**
@@ -18,6 +27,23 @@ export default class DropFile {
   }
 
   /**
+   * Starts the async creation of the file binary
+   * @private
+   * @return {Promise} A promise that resolves with the binary of file
+   */
+  _createBinary () {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader()
+      reader.onload = () => {
+        this._binary = new Uint8Array(reader.result)
+        resolve(this._binary)
+      }
+      reader.onerror = err => reject(err)
+      reader.readAsArrayBuffer(this.data)
+    })
+  }
+
+  /**
    * Starts the async creation of the data URI
    * @private
    * @return {Promise} A promise that resolves with the Data URI of file
@@ -25,23 +51,11 @@ export default class DropFile {
   _createDataUri () {
     return new Promise((resolve, reject) => {
       const reader = new FileReader()
-
-      reader.addEventListener(
-        'load',
-        () => {
-          resolve(reader.result)
-        },
-        false
-      )
-
-      reader.addEventListener(
-        'error',
-        err => {
-          reject(err)
-        },
-        false
-      )
-
+      reader.onload = () => {
+        this._dataUri = reader.result
+        resolve(this._dataUri)
+      }
+      reader.onerror = err => reject(err)
       reader.readAsDataURL(this.data)
     })
   }
