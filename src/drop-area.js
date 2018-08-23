@@ -184,7 +184,7 @@ export default class DropArea extends Emitter {
     }
 
     // Only return one file, unless multiple files option set
-    const filesToAdd = this.options.multipleFiles ? files : [files[0]]
+    const filesToAdd = this.options.multipleFiles ? [...files] : [files[0]]
 
     this.emit(CUSTOM_EVENTS.FILES_ADDED, filesToAdd)
   }
