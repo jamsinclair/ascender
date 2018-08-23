@@ -12,7 +12,8 @@
   "scripts": {
     "format": "prettier-standard 'src/**/*.js'",
     "test": "jest ./src",
-    "build-dist": "rollup -c"
+    "build-dist": "rollup -c",
+    "preversion": "yarn build-dist"
   },
   "dependencies": {
     "tiny-emitter": "^2.0.2"
