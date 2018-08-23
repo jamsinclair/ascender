@@ -2,7 +2,7 @@ import Emitter from 'tiny-emitter'
 import { NATIVE_EVENTS, CUSTOM_EVENTS } from './events'
 
 const DEFAULT_OPTIONS = {
-  multipleFiles: false,
+  multipleFiles: true,
   clickable: true,
   classes: {
     insideDropArea: 'asc-drop-area--inside'
