@@ -132,8 +132,18 @@
     return call && (typeof call === "object" || typeof call === "function") ? call : self;
   };
 
+  var toConsumableArray = function (arr) {
+    if (Array.isArray(arr)) {
+      for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) arr2[i] = arr[i];
+
+      return arr2;
+    } else {
+      return Array.from(arr);
+    }
+  };
+
   var DEFAULT_OPTIONS = {
-    multipleFiles: false,
+    multipleFiles: true,
     clickable: true,
     classes: {
       insideDropArea: 'asc-drop-area--inside'
@@ -347,7 +357,7 @@
         }
 
         // Only return one file, unless multiple files option set
-        var filesToAdd = this.options.multipleFiles ? files : [files[0]];
+        var filesToAdd = this.options.multipleFiles ? [].concat(toConsumableArray(files)) : [files[0]];
 
         this.emit(CUSTOM_EVENTS.FILES_ADDED, filesToAdd);
       }
