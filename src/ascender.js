@@ -58,3 +58,8 @@ export default class Ascender extends Emitter {
     })
   }
 }
+
+export {
+  DropFile,
+  DropArea
+}
