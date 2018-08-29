@@ -1,8 +1,8 @@
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
-  typeof define === 'function' && define.amd ? define(factory) :
-  (global.Ascender = factory());
-}(this, (function () { 'use strict';
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
+  typeof define === 'function' && define.amd ? define(['exports'], factory) :
+  (factory((global.Ascender = {})));
+}(this, (function (exports) { 'use strict';
 
   var NATIVE_EVENTS = {
     CHANGE: 'change',
@@ -376,18 +376,54 @@
 
       this.data = file;
       this._dataUri = null;
+      this._binary = null;
     }
 
     /**
-     * Gets the Data URI of the file
-     * @return {Promise} A promise that resolves with the Data URI of file
+     * Gets the binary data of the file
+     * @return {Promise} A promise that resolves with the binary of file
      */
 
 
     createClass(DropFile, [{
-      key: 'getDataUri',
+      key: "getBinary",
+      value: function getBinary() {
+        return this._binary ? Promise.resolve(this._binary) : this._createBinary();
+      }
+
+      /**
+       * Gets the Data URI of the file
+       * @return {Promise} A promise that resolves with the Data URI of file
+       */
+
+    }, {
+      key: "getDataUri",
       value: function getDataUri() {
         return this._dataUri ? Promise.resolve(this._dataUri) : this._createDataUri();
+      }
+
+      /**
+       * Starts the async creation of the file binary
+       * @private
+       * @return {Promise} A promise that resolves with the binary of file
+       */
+
+    }, {
+      key: "_createBinary",
+      value: function _createBinary() {
+        var _this = this;
+
+        return new Promise(function (resolve, reject) {
+          var reader = new FileReader();
+          reader.onload = function () {
+            _this._binary = new Uint8Array(reader.result);
+            resolve(_this._binary);
+          };
+          reader.onerror = function (err) {
+            return reject(err);
+          };
+          reader.readAsArrayBuffer(_this.data);
+        });
       }
 
       /**
@@ -397,22 +433,20 @@
        */
 
     }, {
-      key: '_createDataUri',
+      key: "_createDataUri",
       value: function _createDataUri() {
-        var _this = this;
+        var _this2 = this;
 
         return new Promise(function (resolve, reject) {
           var reader = new FileReader();
-
-          reader.addEventListener('load', function () {
-            resolve(reader.result);
-          }, false);
-
-          reader.addEventListener('error', function (err) {
-            reject(err);
-          }, false);
-
-          reader.readAsDataURL(_this.data);
+          reader.onload = function () {
+            _this2._dataUri = reader.result;
+            resolve(_this2._dataUri);
+          };
+          reader.onerror = function (err) {
+            return reject(err);
+          };
+          reader.readAsDataURL(_this2.data);
         });
       }
     }]);
@@ -498,6 +532,10 @@
     return Ascender;
   }(tinyEmitter);
 
-  return Ascender;
+  exports.default = Ascender;
+  exports.DropFile = DropFile;
+  exports.DropArea = DropArea;
+
+  Object.defineProperty(exports, '__esModule', { value: true });
 
 })));
