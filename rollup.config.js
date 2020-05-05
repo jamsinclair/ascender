@@ -12,6 +12,9 @@ export default {
   plugins: [
     resolve(),
     common(),
-    babel()
+    babel({
+      babelHelpers: 'bundled',
+      exclude: 'node_modules/**'
+    })
   ]
 }
