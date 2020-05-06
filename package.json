@@ -11,7 +11,7 @@
   "license": "MIT",
   "scripts": {
     "format": "prettier-standard 'src/**/*.js'",
-    "test": "jest ./src",
+    "test": "tsc --noEmit && jest ./src",
     "build-dist": "rollup -c",
     "preversion": "yarn build-dist"
   },
@@ -20,12 +20,16 @@
   },
   "devDependencies": {
     "@babel/core": "^7.9.6",
-    "@babel/preset-env": "^7.9.6",
+    "@babel/parser": "^7.9.6",
+    "@babel/preset-typescript": "^7.9.0",
+    "@babel/types": "^7.9.6",
     "@rollup/plugin-babel": "^5.0.0",
     "@rollup/plugin-commonjs": "^11.1.0",
     "@rollup/plugin-node-resolve": "^7.1.3",
+    "@types/node": "^13.13.5",
     "jest": "^26.0.1",
     "prettier-standard": "^16.3.0",
-    "rollup": "^2.7.6"
+    "rollup": "^2.7.6",
+    "typescript": "^3.8.3"
   }
 }
