@@ -1,12 +1,6 @@
-import DropArea from './drop-area.js'
+import DropArea from './drop-area'
 
 describe('DropArea Construction', () => {
-  it('should error when no params given', () => {
-    expect(() => {
-      new DropArea()
-    }).toThrow()
-  })
-
   it('should error when non HTML element param given', () => {
     expect(() => {
       new DropArea({})

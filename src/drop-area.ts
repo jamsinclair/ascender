@@ -1,7 +1,15 @@
 import Emitter from 'tiny-emitter'
 import { NATIVE_EVENTS, CUSTOM_EVENTS } from './events'
 
-const DEFAULT_OPTIONS = {
+interface Options {
+  clickable?: boolean
+  classes?: {
+    insideDropArea: string
+  }
+  multipleFiles?: boolean
+}
+
+const DEFAULT_OPTIONS: Options = {
   multipleFiles: true,
   clickable: true,
   classes: {
@@ -17,13 +25,17 @@ const DEFAULT_OPTIONS = {
  * @extends Emitter
  */
 export default class DropArea extends Emitter {
+  options: Options = {}
+  _element = null
+  _hiddenFileInput = null
+
   /**
    * DropArea constructor.
    * @constructs DropArea
    * @param {HTMLElement} element - The desired element for drop area
    * @param {Object} options - Options for DropArea
    */
-  constructor (element, options = {}) {
+  constructor (element, options: Options = {}) {
     super()
 
     if (!(element instanceof HTMLElement)) {
@@ -158,7 +170,7 @@ export default class DropArea extends Emitter {
   /**
    * Handler for when a click event occurs within the DropArea
    */
-  _onClick (event) {
+  _onClick () {
     if (this.options.clickable && this._hiddenFileInput) {
       this._hiddenFileInput.click()
     }

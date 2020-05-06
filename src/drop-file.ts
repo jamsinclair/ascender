@@ -1,4 +1,8 @@
 export default class DropFile {
+  data = null
+  _dataUri = null
+  _binary = null
+
   /**
    * DropFile constructor.
    * @constructs DropFile
@@ -6,8 +10,6 @@ export default class DropFile {
    */
   constructor (file) {
     this.data = file
-    this._dataUri = null
-    this._binary = null
   }
 
   /**
@@ -23,7 +25,9 @@ export default class DropFile {
    * @return {Promise} A promise that resolves with the Data URI of file
    */
   getDataUri () {
-    return this._dataUri ? Promise.resolve(this._dataUri) : this._createDataUri()
+    return this._dataUri
+      ? Promise.resolve(this._dataUri)
+      : this._createDataUri()
   }
 
   /**
@@ -35,7 +39,7 @@ export default class DropFile {
     return new Promise((resolve, reject) => {
       const reader = new FileReader()
       reader.onload = () => {
-        this._binary = new Uint8Array(reader.result)
+        this._binary = reader.result
         resolve(this._binary)
       }
       reader.onerror = err => reject(err)
