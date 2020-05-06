@@ -2,26 +2,24 @@
   "name": "ascender",
   "version": "0.4.0",
   "description": "Lightweight promise based drag'n'drop upload",
-  "main": "dist/ascender.js",
+  "main": "dist/cjs/index.js",
   "author": "James Sinclair <jamsinclairnz+npm@gmail.com>",
   "files": [
-    "dist/*",
-    "src/*"
+    "dist/*"
   ],
   "license": "MIT",
   "scripts": {
     "format": "prettier-standard 'src/**/*.ts'",
     "test": "tsc --noEmit && jest ./src",
-    "build": "rollup -c",
-    "preversion": "yarn build-dist"
+    "build": "rollup -c && tsc",
+    "preversion": "yarn build"
   },
   "dependencies": {
-    "tiny-emitter": "^2.1.0"
+    "mitt": "^1.2.0"
   },
   "devDependencies": {
     "@babel/core": "^7.9.6",
     "@babel/parser": "^7.9.6",
-    "@babel/plugin-proposal-class-properties": "^7.8.3",
     "@babel/preset-env": "^7.9.6",
     "@babel/preset-typescript": "^7.9.0",
     "@babel/types": "^7.9.6",

@@ -3,12 +3,15 @@ import common from '@rollup/plugin-commonjs'
 import babel from '@rollup/plugin-babel'
 
 export default {
-  input: './src/ascender.ts',
-  output: {
-    file: './dist/ascender.js',
+  input: './src/index.ts',
+  output: [{
+    file: './dist/cjs/index.js',
+    format: 'cjs',
+  }, {
+    file: './dist/umd/index.js',
     format: 'umd',
     name: 'Ascender'
-  },
+  }],
   plugins: [
     resolve({ extensions: ['.ts'] }),
     common(),
