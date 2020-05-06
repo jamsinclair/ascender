@@ -16,6 +16,7 @@
     "preversion": "yarn build"
   },
   "dependencies": {
+    "@babel/plugin-transform-runtime": "^7.9.6",
     "mitt": "^1.2.0"
   },
   "devDependencies": {
