@@ -12,7 +12,7 @@
   "scripts": {
     "format": "prettier-standard 'src/**/*.ts'",
     "test": "tsc --noEmit && jest ./src",
-    "build-dist": "rollup -c",
+    "build": "rollup -c",
     "preversion": "yarn build-dist"
   },
   "dependencies": {
