@@ -26,6 +26,5 @@ interface DropZoneInstance {
   off(type: "*", handler: mitt.WildcardHandler): void;
 }
 
-export function createBinary(file: File): Promise<ArrayBuffer>
 export function createDataUri(file: File): Promise<string>
 export function DropZone(element: Element, options?: DropZoneOptions): DropZoneInstance
