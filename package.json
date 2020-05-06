@@ -5,7 +5,8 @@
   "main": "dist/cjs/index.js",
   "author": "James Sinclair <jamsinclairnz+npm@gmail.com>",
   "files": [
-    "dist/*"
+    "dist/*",
+    "index.d.ts"
   ],
   "license": "MIT",
   "scripts": {
