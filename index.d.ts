@@ -1,6 +1,6 @@
 import * as mitt from 'mitt'
 
-enum DropZoneEvents {
+declare enum DropZoneEvents {
   click = 'click',
   dragstart = 'dragstart',
   dragend = 'dragend',

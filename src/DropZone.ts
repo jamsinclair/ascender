@@ -1,9 +1,10 @@
 import mitt from 'mitt'
 
-const createFileInput = (accept: string, multiple: boolean) => {
+const createFileInput = (accept: string, id: string, multiple: boolean) => {
   const input = document.createElement('input')
-  input.setAttribute('type', 'file')
+  input.setAttribute('id', id)
   input.setAttribute('style', 'display: none')
+  input.setAttribute('type', 'file')
   if (accept) {
     input.setAttribute('accept', accept)
   }
@@ -29,12 +30,14 @@ const DEFAULT_OPTIONS = {
   accept: '',
   clickable: true,
   dragClass: 'ascender-dragging',
+  id: 'ascender-file-input',
   multiple: true
 }
 interface DropZoneOptions {
   accept?: string
   clickable?: boolean
   dragClass?: string
+  id?: string
   multiple?: boolean
 }
 
@@ -42,9 +45,12 @@ export default function DropZone (
   element: Element,
   options: DropZoneOptions = {}
 ) {
-  const _options = { ...DEFAULT_OPTIONS, ...options }
+  const { accept, clickable, dragClass, id, multiple } = {
+    ...DEFAULT_OPTIONS,
+    ...options
+  }
   const emitter = mitt()
-  const hiddenFileInput = createFileInput(_options.accept, _options.multiple)
+  const hiddenFileInput = createFileInput(accept, id, multiple)
   hiddenFileInput.addEventListener('change', () => {
     handleFiles(hiddenFileInput.files)
     hiddenFileInput.value = ''
@@ -53,33 +59,36 @@ export default function DropZone (
 
   const handleFiles = files => {
     for (let file of files) {
-      if (!fileMatchesAccept(file, _options.accept)) {
+      if (!fileMatchesAccept(file, accept)) {
         continue
       }
       emitter.emit('fileadded', file)
+      if (!multiple) {
+        break
+      }
     }
   }
-  const onClick = () => {
-    _options.clickable && hiddenFileInput.click()
-    emitter.emit(event.type)
+  const onClick = (event: MouseEvent) => {
+    clickable && hiddenFileInput.click()
+    emitter.emit('click', event)
   }
   const onDragInside = (event: DragEvent) => {
     event.preventDefault()
     event.stopPropagation()
-    emitter.emit(event.type)
-    element.classList.add(_options.dragClass)
+    emitter.emit(event.type, event)
+    element.classList.add(dragClass)
   }
   const onDragOutside = (event: DragEvent) => {
     event.preventDefault()
     event.stopPropagation()
-    emitter.emit(event.type)
-    element.classList.remove(_options.dragClass)
+    emitter.emit(event.type, event)
+    element.classList.remove(dragClass)
   }
   const onDrop = (event: DragEvent) => {
     event.preventDefault()
     event.stopPropagation()
-    emitter.emit('drop')
-    element.classList.remove(_options.dragClass)
+    emitter.emit('drop', event)
+    element.classList.remove(dragClass)
     if (event.dataTransfer && event.dataTransfer.files) {
       handleFiles(event.dataTransfer.files)
     }

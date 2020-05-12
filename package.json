@@ -16,18 +16,20 @@
     "preversion": "yarn build"
   },
   "dependencies": {
-    "@babel/plugin-transform-runtime": "^7.9.6",
+    "@babel/runtime": "^7.9.6",
     "mitt": "^1.2.0"
   },
   "devDependencies": {
     "@babel/core": "^7.9.6",
     "@babel/parser": "^7.9.6",
+    "@babel/plugin-transform-runtime": "^7.9.6",
     "@babel/preset-env": "^7.9.6",
     "@babel/preset-typescript": "^7.9.0",
     "@babel/types": "^7.9.6",
     "@rollup/plugin-babel": "^5.0.0",
     "@rollup/plugin-commonjs": "^11.1.0",
     "@rollup/plugin-node-resolve": "^7.1.3",
+    "@testing-library/dom": "^7.5.1",
     "@types/jest": "^25.2.1",
     "@types/node": "^13.13.5",
     "jest": "^26.0.1",
