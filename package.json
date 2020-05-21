@@ -12,7 +12,8 @@
   "scripts": {
     "format": "prettier-standard 'src/**/*.ts'",
     "test": "tsc --noEmit && jest ./src",
-    "build": "rollup -c && tsc",
+    "build": "rollup -c &&  npm run build-umd && tsc",
+    "build-umd": "BABEL_ENV=umd rollup -c",
     "preversion": "yarn build"
   },
   "dependencies": {
