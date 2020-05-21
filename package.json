@@ -11,6 +11,7 @@
   "license": "MIT",
   "scripts": {
     "format": "prettier-standard 'src/**/*.ts'",
+    "lint": "prettier-standard 'src/**/*.ts' --check",
     "test": "tsc --noEmit && jest ./src",
     "build": "rollup -c &&  npm run build-umd && tsc",
     "build-umd": "BABEL_ENV=umd rollup -c",
