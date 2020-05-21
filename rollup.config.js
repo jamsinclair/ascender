@@ -33,8 +33,7 @@ const commonjsPlugin = commonjs()
 const resolvePlugin = resolve({ extensions: ['.ts'] })
 const babelPlugin = babel({
   babelHelpers: bundleExternal ? 'bundled' : 'runtime',
-  extensions: ['.ts'],
-  plugins: bundleExternal ? [] : undefined
+  extensions: ['.ts']
 })
 
 export default {
