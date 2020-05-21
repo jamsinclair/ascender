@@ -4,3 +4,4 @@ node_modules/
 dist/
 examples-build/
 yarn-error.log
+package-lock.json
