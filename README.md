@@ -1,4 +1,4 @@
-# Ascenderß
+# Ascender
 
 > A collection of light utilities to support Drag'n'Drop uploads. 
 
