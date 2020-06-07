@@ -1,10 +1,31 @@
-# Ascender
+# Ascenderß
 
-## ⚠️ This Library is Still Work in Progress
+> A collection of light utilities to support Drag'n'Drop uploads. 
 
-> A minimal and modular Drag'n'Drop Upload JavaScript library. 
+## Usage
 
-There are many other amazing similar libraries out there. This library is inspired by them but is striving to do the bare minimum so can easily be integrated into other JS apps and frameworks.
+Template:
+```html
+<form class="dropzone">Drop files or click to upload</form>
+```
+
+JavaScript:
+```js
+import { DropZone } from 'ascender';
+
+const instance = DropZone(document.querySelector('.dropzone'));
+instance.on('fileadded', file => {
+  console.log(`${file.name} - ${file.type} - ${file.size} bytes`);
+});
+```
+
+## Examples
+
+- [Basic usage](https://githubbox.com/jamsinclair/ascender/tree/master/examples/basic)
+- [Accepting files of only certain types](https://githubbox.com/jamsinclair/ascender/tree/master/examples/accept-files)
+- [Showing image preview](https://githubbox.com/jamsinclair/ascender/tree/master/examples/image-preview)
+
+---
 
 Inspired by:
 - [Dropzone.js](http://www.dropzonejs.com)
