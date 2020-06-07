@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ascender example rendering image previews</title>
+  <style>
+    .container {
+      padding: 10px;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .dropzone {
+      padding: 40px;
+      border: 2px dashed #333333;
+      border-radius: 3px;
+      font-size: 22px;
+      font-family: Arial, Helvetica, sans-serif;
+      text-align: center;
+    }
+    .dropzone.ascender-dragging {
+      background-color: lightskyblue;
+    }
+    .file-previews {
+      display: grid;
+      align-items: center;
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-gap: 6px;
+    }
+    .preview {
+      display: inline-block;
+      margin: 0px;
+      max-width: 150px;
+    }
+    img {
+      max-width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="dropzone">
+      <label for="ascender-file-input">Drop images files to see their previews (or click to upload)</label>
+    </div>
+    <p>Image Previews:</p>
+    <div class="file-previews"></div>
+  </div>
+  <script src="./main.js"></script>
+</body>
+</html>

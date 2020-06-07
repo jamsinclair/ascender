@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ascender basic example</title>
+  <style>
+    .container {
+      padding: 10px;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .dropzone {
+      padding: 40px;
+      border: 2px dashed #333333;
+      border-radius: 3px;
+      font-size: 22px;
+      font-family: Arial, Helvetica, sans-serif;
+      text-align: center;
+    }
+    .dropzone.ascender-dragging {
+      background-color: lightskyblue;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="dropzone">
+      <label for="ascender-file-input">Drop files or click to upload</label>
+    </div>
+    <p>Files:</p>
+    <ul class="file-list"></ul>
+  </div>
+  <script src="./main.js"></script>
+</body>
+</html>
